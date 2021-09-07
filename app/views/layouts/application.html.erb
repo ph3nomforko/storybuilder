@@ -11,6 +11,14 @@
   </head>
 
   <body>
+    <div>
+      <% if !logged_in? %>
+        <%= link_to "Create an Account", signup_path %> |
+        <%= link_to "Log In", login_path %>
+      <% else %>
+        <%= link_to "Logout", logout_path, method: :delete %>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
