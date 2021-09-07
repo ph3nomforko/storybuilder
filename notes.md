@@ -5,7 +5,7 @@
  - has_many :stories, through: :characters
  - :username (string)
  - :email (string)
- - :password (string)
+ - :password_digest (string)
 
 ## Story
  - belongs_to :user
@@ -14,7 +14,6 @@
  - :name (string)
  - :summary (text)
  - :story_outline (text)
- - :non_playable_persons
 
 ## Characters
  - belongs_to :user
