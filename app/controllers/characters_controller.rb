@@ -1,6 +1,15 @@
 class CharactersController < ApplicationController
     before_action :redirect_if_not_logged_in
 
+    def index
+        if params[:story_id] && @story = Story.find_by_id(params[:story_id])
+            @characters = @story.characters
+        else
+            flash[:message] = "That story has not been created yet." if params[:story_id]
+            @characters = Character.all
+        end
+    end
+
     def new
         @character = Character.new
     end
