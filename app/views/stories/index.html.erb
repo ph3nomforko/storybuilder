@@ -1,0 +1,1 @@
+<h1>Story Index</h1>
