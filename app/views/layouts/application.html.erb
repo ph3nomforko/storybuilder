@@ -16,6 +16,8 @@
         <%= link_to "Create an Account", signup_path %> |
         <%= link_to "Log In", login_path %>
       <% else %>
+        <%= link_to "Create a Story", new_story_path %> |
+        <%= link_to "All Stories", stories_path %> |
         <%= link_to "Logout", logout_path, method: :delete %>
       <% end %>
     </div>
