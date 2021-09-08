@@ -11,7 +11,11 @@ class JournalsController < ApplicationController
     end
 
     def new
-        @journal = Journal.new
+        if params[:story_id] && @story = Story.find_by_id(params[:story_id])
+            @journal = @story.journals.build
+        else
+            @journal = Journal.new
+        end
     end
 
     def create
