@@ -3,7 +3,7 @@
 
 <div><%= @story.summary %></div>
 
-<div>Your Character: <%= @story.user.characters.first.name %></div>
+<!-- <div>Your Character: <%= @story.user.characters.first.name %></div> -->
 <div>
 Journal Entries<br>
 <% @story.journals.reverse.each do |journal| %>
@@ -12,5 +12,5 @@ Journal Entries<br>
 <% end %>
 </div>
 
-<p><%=link_to "See all characters", story_characters_path(@story.id) %></p>
+<p><%= link_to "See all characters", story_characters_path(@story.id) %></p>
 <p><%= link_to "Add a Journal Entry for this Story.", new_story_journal_path(@story.id) %></p>
