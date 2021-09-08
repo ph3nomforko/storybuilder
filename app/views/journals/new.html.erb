@@ -1,0 +1,10 @@
+<h1>New Journal Entry</h1>
+<%= form_for(@journal) do |f| %>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+    <br><br>
+    <%= f.label :story %>
+    <%= f.collection_select :story_id, Story.all, :id, :name %>
+    <br><br>
+    <%= f.submit "Create Journal Entry" %>
+<% end %>
