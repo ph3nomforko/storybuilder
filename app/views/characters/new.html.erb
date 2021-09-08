@@ -1,0 +1,22 @@
+<h1>New Character</h1>
+<%= form_for(@character) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <br><br>
+    <%= f.label :species %>
+    <%= f.text_field :species %>
+    <br><br>
+    <%= f.label :role %>
+    <%= f.text_field :role %>
+    <br><br>
+    <%= f.label :level %>
+    <%= f.text_field :level %>
+    <br><br>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+    <br><br>
+    <%= f.label :story %>
+    <%= f.collection_select :story_id, Story.all, :id, :name %>
+    <br><br>
+    <%= f.submit "Create Character" %>
+<% end %>
