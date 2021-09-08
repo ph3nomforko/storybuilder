@@ -4,6 +4,10 @@ class StoriesController < ApplicationController
     def show
         @story = Story.find_by(id: params[:id])
     end
+
+    def index
+        @stories = Story.all
+    end
     
     def new
         @story = Story.new
