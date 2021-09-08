@@ -25,4 +25,9 @@
  - :description (string)
 
 # Stretch Goals
- - Create two categories of characters. One as "player characters" and one as "DM characters".
+ - Create journal model to add to stories
+
+# Nested Routes
+ - '/users/:id/characters'
+ - '/users/:id/stories'
+ - '/stories/:id/characters'
