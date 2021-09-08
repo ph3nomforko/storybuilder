@@ -1,6 +1,10 @@
 class StoriesController < ApplicationController
     before_action :redirect_if_not_logged_in
 
+    def show
+        @story = Story.find_by(id: params[:id])
+    end
+    
     def new
         @story = Story.new
     end
