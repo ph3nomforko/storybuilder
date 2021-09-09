@@ -7,4 +7,7 @@ class Story < ApplicationRecord
 
   scope :alpha, -> { order (:name) }
   scope :most_popular, -> { left_outer_joins(:characters).group(:id).order('count(characters.id) desc') }
+
+  validates :name, :summary, :story_outline, :passcode, presence: true
+
 end
