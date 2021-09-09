@@ -21,10 +21,14 @@ class CharactersController < ApplicationController
     def create
         @character = current_user.characters.build(character_params)
         @story = Story.find_by(id: @character.story_id)
-        if @character.passcode == @story.passcode && @character.save
-      #  if @character.save
-            redirect_to user_characters_path(current_user.id)
+        if @character.passcode == @story.passcode 
+            if @character.save
+                redirect_to user_characters_path(current_user.id)
+            else
+                render :new
+            end
         else
+            flash[:message] = "That passcode does not seem to match. Please check and try again."
             render :new
         end
     end
