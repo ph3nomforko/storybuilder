@@ -1,6 +1,10 @@
 class CharactersController < ApplicationController
     before_action :redirect_if_not_logged_in
 
+    def show
+        @character = Character.find_by(id: params[:id])
+    end
+
     def index
         if params[:story_id] && @story = Story.find_by_id(params[:story_id])
             @characters = @story.characters
