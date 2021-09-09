@@ -10,7 +10,7 @@ class StoriesController < ApplicationController
             @stories = @user.stories.alpha
         else
             flash[:message] = "That user has not been created yet." if params[:user_id]
-            @stories = Story.alpha
+            @stories = Story.most_popular
         end
     end
     
