@@ -1,0 +1,7 @@
+<h1><%= @character.name %></h1>
+<h2>Created by: <%= @character.user.username %></h2>
+<p>Species: <%= @character.species %></p>
+<p>Class: <%= @character.role %></p>
+<p>Level: <%= @character.level %></p>
+<p>Description: <%= @character.description %></p>
+Story: <%= link_to @character.story.name, story_path(@character.story_id) %>

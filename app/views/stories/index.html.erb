@@ -6,10 +6,10 @@
     <th>Creator</th>
   </tr>
     <% @stories.each do |story| %>
-        <tr>
-            <td><%= link_to story.name, story_path(story) %></td>
-            <td><%= story.summary %></td>
-            <td><%= story.user.username %></td>
-        </tr>
+      <tr>
+          <td><%= link_to story.name, story_path(story) %></td>
+          <td><%= story.summary %></td>
+          <td><%= story.user.username %></td>
+      </tr>
     <% end %>
-  
+  </table>
