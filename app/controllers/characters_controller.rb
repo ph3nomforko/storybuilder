@@ -21,7 +21,6 @@ class CharactersController < ApplicationController
     def create
         @character = current_user.characters.build(character_params)
         @story = Story.find_by(id: @character.story_id)
-        binding.pry
         if @character.passcode == @story.passcode && @character.save
       #  if @character.save
             redirect_to user_characters_path(current_user.id)
