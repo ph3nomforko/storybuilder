@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :stories, only: [:new, :create, :index]
+    resources :characters, only: [:new, :create, :index]
   end
 
   resources :stories do
