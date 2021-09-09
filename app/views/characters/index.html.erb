@@ -1,4 +1,4 @@
-<h1>Here are your characters!</h1>
+<h2>Here are your characters!</h2>
 <% current_user.characters.each do |character| %>
   <%= link_to character.name, character_path(character.id) %> |
   <%= link_to character.story.name, story_path(character.story_id) %>
