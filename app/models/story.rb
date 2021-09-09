@@ -10,4 +10,12 @@ class Story < ApplicationRecord
 
   validates :name, :summary, :story_outline, :passcode, presence: true
 
+  validate :story_limit
+
+  def story_limit
+    if user.stories.count > 25
+      errors.add(:user_id, "has too many created stories. Please delete an old one.")
+    end
+  end
+
 end
