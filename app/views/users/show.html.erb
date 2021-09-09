@@ -1,4 +1,15 @@
-<h1><%= "#{@user.username}" %></h1>
+<h1><%= "#{@user.username}" %>'s Homepage</h1>
+<table>
+  <tr>
+    <th>Character</th>
+    <th>Story</th>
+    <th>Date Created</th>
+  </tr>
 <% @user.characters.each do |character| %>
-    <%= link_to character.name, characters_path(character) %><br>
+    <tr>
+    <td><%= link_to character.name, character_path(character.id) %></td>
+    <td><%= link_to character.story.name, story_path(character.story.id) %></td>
+    <td><%= character.created_at.strftime("%B %e, %Y") %></td>
+    </tr>
 <% end %>
+</table>
