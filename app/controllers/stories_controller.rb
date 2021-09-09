@@ -30,7 +30,7 @@ class StoriesController < ApplicationController
     private
 
         def story_params
-            params.require(:story).permit(:name, :summary, :story_outline)
+            params.require(:story).permit(:name, :summary, :story_outline, :passcode)
         end
 
 end

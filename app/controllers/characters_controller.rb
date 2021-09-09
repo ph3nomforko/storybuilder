@@ -16,7 +16,10 @@ class CharactersController < ApplicationController
 
     def create
         @character = current_user.characters.build(character_params)
-        if @character.save
+        @story = Story.find_by(id: @character.story_id)
+        binding.pry
+        if @character.passcode == @story.passcode && @character.save
+      #  if @character.save
             redirect_to user_characters_path(current_user.id)
         else
             render :new
@@ -26,6 +29,6 @@ class CharactersController < ApplicationController
     private
 
         def character_params
-            params.require(:character).permit(:name, :species, :role, :level, :description, :story_id)
+            params.require(:character).permit(:name, :species, :role, :level, :description, :story_id, :passcode)
         end
 end
