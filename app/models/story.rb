@@ -6,4 +6,5 @@ class Story < ApplicationRecord
   has_many :users, through: :journals
 
   scope :alpha, -> { order (:name) }
+  scope :most_popular, -> { left_outer_joins(:characters).group(:id).order('count(characters.id) desc') }
 end
