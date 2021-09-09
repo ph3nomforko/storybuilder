@@ -6,7 +6,12 @@ class StoriesController < ApplicationController
     end
 
     def index
-        @stories = Story.all
+        if params[:user_id] && @user = User.find_by_id(params[:user_id])
+            @stories = @user.stories
+        else
+            flash[:message] = "That user has not been created yet." if params[:user_id]
+            @stories = Story.all
+        end
     end
     
     def new
@@ -16,7 +21,7 @@ class StoriesController < ApplicationController
     def create
         @story = current_user.stories.build(story_params)
         if @story.save
-            redirect_to stories_path
+            redirect_to story_path(@story)
         else
             render :new
         end
