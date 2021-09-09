@@ -6,4 +6,6 @@ class User < ApplicationRecord
     has_many :journaled_stories, through: :journals, source: :story
 
     has_secure_password
+
+
 end
