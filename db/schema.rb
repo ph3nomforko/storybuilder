@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_08_154004) do
+ActiveRecord::Schema.define(version: 2021_09_09_165451) do
 
   create_table "characters", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2021_09_08_154004) do
     t.string "role"
     t.integer "level"
     t.text "description"
+    t.string "passcode"
     t.index ["story_id"], name: "index_characters_on_story_id"
     t.index ["user_id"], name: "index_characters_on_user_id"
   end
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 2021_09_08_154004) do
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "passcode"
     t.index ["user_id"], name: "index_stories_on_user_id"
   end
 
