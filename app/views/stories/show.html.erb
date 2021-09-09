@@ -1,16 +1,18 @@
 <h1><%= @story.name %></h1>
 <h2>An Adventure by: <%= @story.user.username %></h2>
 
-<div><%= @story.summary %></div>
+<h3><%= @story.summary %></h3>
+
+<p><%= @story.story_outline %><p>
 
 <div>
-Journal Entries<br>
+Journal Entries:<br>
 <% @story.journals.reverse.each do |journal| %>
     <%= journal.created_at.strftime("%B %e, %Y at %I:%M %p") %><br>
     <%= journal.content %><br><br>
 <% end %>
 </div>
 
-<p><%= link_to "See this story's characters", story_characters_path(@story.id) %></p>
+<p><%= link_to "See #{@story.name}'s characters", story_characters_path(@story.id) %></p>
 <p><%= link_to "Join this Story", new_story_character_path(@story.id) %>
 <p><%= link_to "Add a Journal Entry for this Story.", new_story_journal_path(@story.id) %></p>
