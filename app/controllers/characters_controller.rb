@@ -17,7 +17,7 @@ class CharactersController < ApplicationController
     def create
         @character = current_user.characters.build(character_params)
         if @character.save
-            redirect_to characters_path
+            redirect_to user_characters_path(current_user.id)
         else
             render :new
         end
