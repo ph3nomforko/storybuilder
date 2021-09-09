@@ -19,7 +19,7 @@
         <%= link_to "Create an Account", signup_path %> |
         <%= link_to "Log In", login_path %>
       <% else %>
-        <%= link_to "My Page", user_path(current_user.id) %>
+        <%= link_to "My Page", user_path(current_user.id) %> |
         <%= link_to "Create a Story", new_user_story_path(current_user.id) %> |
         <%= link_to "All Stories", stories_path %> |
         <%= link_to "Create a New Character", new_user_character_path(current_user.id) %> |
