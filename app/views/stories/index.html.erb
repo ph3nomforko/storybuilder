@@ -1,4 +1,15 @@
 <h1>Story Index</h1>
-<% @stories.each do |story| %>
-    <%= link_to story.name, story_path(story) %><br>
-<% end %>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Summary</th>
+    <th>Creator</th>
+  </tr>
+    <% @stories.each do |story| %>
+        <tr>
+        <td><%= link_to story.name, story_path(story) %></td>
+        <td><%= story.summary %></td>
+        <td><%= story.user.username %></td>
+        </tr>
+    <% end %>
+  
