@@ -1,4 +1,7 @@
 <h2>Create a New Story</h2>
+
+<%= render partial: "layouts/errors", locals: {object: @story} %>
+
 <%= form_for(@story) do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>
