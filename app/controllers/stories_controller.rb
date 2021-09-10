@@ -6,7 +6,7 @@ class StoriesController < ApplicationController
     end
 
     def index
-        if params[:user_id] && @user = User.find_by_id(params[:user_id])
+        if params[:user_id] && set_user_by_params
             @stories = @user.stories.alpha
         else
             flash[:message] = "That user has not been created yet." if params[:user_id]
