@@ -2,7 +2,7 @@ class JournalsController < ApplicationController
     before_action :redirect_if_not_logged_in
 
     def index
-        if params[:story_id] && @story = Story.find_by_id(params[:story_id])
+        if params[:story_id] && set_story_by_params
             @journals = @story.journals
         else
             flash[:message] = "That story has not been created yet." if params[:story_id]
@@ -11,7 +11,7 @@ class JournalsController < ApplicationController
     end
 
     def new
-        if params[:story_id] && @story = Story.find_by_id(params[:story_id])
+        if params[:story_id] && set_story_by_params
             @journal = @story.journals.build
         else
             @journal = Journal.new
@@ -24,6 +24,21 @@ class JournalsController < ApplicationController
             redirect_to story_path(@journal.story_id)
         else
             render :new
+        end
+    end
+
+    def edit
+        @journal = Journal.find_by(id: params[:id])
+        redirect_to stories_path if !@journal || @journal.user != current_user
+    end
+
+    def update
+        @journal = Journal.find_by(id: params[:id])
+        redirect_to stories_path if !@journal || @journal.user != current_user
+        if @journal.update(journal_params)
+            redirect_to stories_path
+        else
+            render :edit
         end
     end
 

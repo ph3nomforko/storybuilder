@@ -1,0 +1,32 @@
+<% if @journal.story %>
+<h1>Edit Journal Entry for <%= @journal.story.name %></h1>
+<% else %>
+<h1>Edit Journal Entry</h1>
+<% end %>
+
+<% if @journal.errors.any? %>
+    <div id="error_explanation">
+        <h2><%= pluralize(@journal.errors.count, "error") %>prohibited this story from being saved:</h2>
+
+        <ul>
+        <% @journal.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+        </ul>
+    </div>
+<% end %>
+
+<%= form_for(@journal) do |f| %>
+
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+    <br><br>
+    <% if !@journal.story %>
+        <%= f.label :story %>
+        <%= f.collection_select :story_id, Story.all, :id, :name %>
+    <% else %>
+        <%= f.hidden_field :story_id %>
+    <br><br>
+    <% end %>
+    <%= f.submit "Edit Journal Entry" %>
+<% end %>
