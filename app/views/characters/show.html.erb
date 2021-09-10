@@ -5,4 +5,6 @@
 <p>Level: <%= @character.level %></p>
 <p>Description: <%= @character.description %></p>
 Story: <%= link_to @character.story.name, story_path(@character.story_id) %><br><br>
-<%= link_to "Edit this Character", edit_character_path(@character.id) %>
+<% if current_user == @character.user %>
+    <%= link_to "Edit this Character", edit_character_path(@character.id) %>
+<% end %>
