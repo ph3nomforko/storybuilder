@@ -13,7 +13,7 @@
 
   <body>
     <div>
-    <h1>Role-Playing Storybuilder</h1>
+    <h1 style="text-align:center">Role-Playing Game Storybuilder</h1>
     </div>
     <div>
       <% if !logged_in? %>
@@ -25,7 +25,8 @@
         <li><%= link_to "Create a Story", new_user_story_path(current_user.id) %></li>
         <li><%= link_to "All Stories", stories_path %></li>
         <li><%= link_to "Create a New Character", new_user_character_path(current_user.id) %></li>
-        <li><%= link_to "Logout", logout_path, method: :delete %></li>
+        <li><%= link_to "My Characters", user_characters_path(current_user.id) %></li>
+        <li style="float:right"><%= link_to "Logout", logout_path, method: :delete %></li>
       </ul>
       <% end %>
     </div>
