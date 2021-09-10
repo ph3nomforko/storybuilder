@@ -35,6 +35,21 @@ class CharactersController < ApplicationController
         end
     end
 
+    def edit
+        @character = Character.find_by(id: params[:id])
+        redirect_to user_path(current_user) if !@character || @character.user != current_user
+    end
+
+    def update
+        @character = Character.find_by(id: params[:id])
+        redirect_to user_path(current_user) if !@character || @character.user != current_user
+        if @character.update(character_params)
+            redirect_to user_characters_path(current_user.id)
+        else
+            render :edit
+        end
+    end
+
     private
 
         def character_params
