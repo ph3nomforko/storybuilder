@@ -8,6 +8,8 @@ class CharactersController < ApplicationController
     def index
         if params[:story_id] && @story = Story.find_by_id(params[:story_id])
             @characters = @story.characters
+        elsif params[:user_id] && @user = User.find_by_id(params[:user_id])
+            @characters = @user.characters
         else
             flash[:message] = "That story has not been created yet." if params[:story_id]
             @characters = Character.all

@@ -5,7 +5,7 @@
   <th>Description</th>
   <th>Story</th>
 </tr>
-<% current_user.characters.each do |character| %>
+<% @characters.each do |character| %>
 <tr>
   <td><%= link_to character.name, character_path(character.id) %></td>
   <td><%= character.description %></td>
