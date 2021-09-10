@@ -16,4 +16,15 @@ class ApplicationController < ActionController::Base
             redirect_to root_path if !logged_in?
         end
 
+        def authorized_to_edit?(object)
+            object.user == current_user
+        end
+
+        def set_story_by_params
+            @story = Story.find_by_id(params[:story_id])
+        end
+
+        def set_user_by_params
+            @user = User.find_by_id(params[:user_id])
+        end
 end
