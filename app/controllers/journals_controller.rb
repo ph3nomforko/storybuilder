@@ -11,10 +11,15 @@ class JournalsController < ApplicationController
     end
 
     def new
-        if params[:story_id] && set_story_by_params
-            @journal = @story.journals.build
+        if current_user != Story.find_by(id: params[:story_id]).user || 
+            current_user.characters.find_by(id: params[:story_id]) != Story.find_by(id: params[:story_id]).characters.find_by(id: current_user.id)
+            if params[:story_id] && set_story_by_params
+                @journal = @story.journals.build
+            else
+                @journal = Journal.new
+            end
         else
-            @journal = Journal.new
+            redirect_to stories_path
         end
     end
 
