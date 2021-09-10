@@ -2,7 +2,7 @@ class CharactersController < ApplicationController
     before_action :redirect_if_not_logged_in
 
     def show
-        @character = Character.find_by(id: params[:id])
+        find_and_set_character
     end
 
     def index
@@ -37,12 +37,12 @@ class CharactersController < ApplicationController
 
     def edit
         find_and_set_character
-        redirect_if_not_authorized
+        redirect_if_not_authorized(@character)
     end
 
     def update
         find_and_set_character
-        redirect_if_not_authorized
+        redirect_if_not_authorized(@character)
         if @character.update(character_params)
             redirect_to user_characters_path(current_user.id)
         else
@@ -52,7 +52,7 @@ class CharactersController < ApplicationController
 
     def destroy
         find_and_set_character
-        redirect_if_not_authorized
+        redirect_if_not_authorized(@character)
         @character.destroy
         redirect_to user_path(current_user)
     end
@@ -65,10 +65,6 @@ class CharactersController < ApplicationController
 
     def find_and_set_character
         @character = Character.find_by(id: params[:id])
-    end
-
-    def redirect_if_not_authorized
-        redirect_to user_path(current_user) if !@character || !authorized_to_edit?(@character)
     end
 
 end
