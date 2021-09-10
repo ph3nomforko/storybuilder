@@ -1,0 +1,19 @@
+<h2>Edit Your Story</h2>
+
+<%= render partial: "layouts/errors", locals: {object: @story} %>
+
+<%= form_for(@story) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <br><br>
+    <%= f.label :summary %>
+    <%= f.text_area :summary %>
+    <br><br>
+    <%= f.label :story_outline %>
+    <%= f.text_area :story_outline %>
+    <br><br>
+    <%= f.label :passcode %>
+    <%= f.text_field :passcode %>
+    <br><br>
+    <%= f.submit "Create Story" %>
+<% end %>
