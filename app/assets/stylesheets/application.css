@@ -18,6 +18,17 @@
      font-family: Georgia, 'Times New Roman', Times, serif;
      background-color: lightgrey;
  }
+
+ div.main {
+   background-color: whitesmoke;
+   margin-top: 1vh;
+   margin-left: 3vw;
+   margin-right: 3vw;
+   padding-bottom: 3vw;
+   padding-left: 1vw;
+   padding-right: 1vw;
+ }
+
  ul {
     list-style-type: none;
     margin: 0;
