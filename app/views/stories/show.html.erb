@@ -19,7 +19,10 @@
             <td><%= journal.content %></td>
             <td><%= journal.created_at.strftime("%B %e, %Y at %I:%M %p") %></td>
             <td><%= "By: #{journal.user.username}" %></td>
-            <td><%= link_to "Edit", edit_journal_path(journal) %></td>
+            <td>
+            <%= link_to "Edit", edit_journal_path(journal) %> |
+            <%= link_to "Delete", journal_path(journal), method: :delete, data: { confirm: "Are you sure?" } %>
+            </td>
         <tr>
     <% end %>
     </table>
