@@ -4,6 +4,11 @@ class UsersController < ApplicationController
         @user = User.new
     end
 
+    def index
+        redirect_if_not_logged_in
+        redirect_to user_path(current_user)
+    end
+
     def create
         @user = User.new(user_params)
         if @user.save
