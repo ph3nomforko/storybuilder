@@ -6,25 +6,45 @@
 <p><%= @story.story_outline %><p>
 
 <div>
-<h3>Journal Entries (<%= link_to "Add Entry", new_story_journal_path(@story.id) %>)</h3>
-<table>
-    <tr>
-        <th>Entry</th>
-        <th>Author</th>
-        <th>Date</th>
-        <th>Actions</th>
-    </tr>
-<% @story.journals.reverse.each do |journal| %>
-    <tr>
-        <td><%= journal.content %></td>
-        <td><%= journal.created_at.strftime("%B %e, %Y at %I:%M %p") %></td>
-        <td><%= "By: #{journal.user.username}" %></td>
-        <td><%= link_to "Edit", edit_journal_path(journal) %></td>
-    <tr>
-<% end %>
-</table>
-
+    <h3>Journal Entries (<%= link_to "Add Entry", new_story_journal_path(@story.id) %>)</h3>
+    <table>
+        <tr>
+            <th>Entry</th>
+            <th>Author</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+    <% @story.journals.reverse.each do |journal| %>
+        <tr>
+            <td><%= journal.content %></td>
+            <td><%= journal.created_at.strftime("%B %e, %Y at %I:%M %p") %></td>
+            <td><%= "By: #{journal.user.username}" %></td>
+            <td><%= link_to "Edit", edit_journal_path(journal) %></td>
+        <tr>
+    <% end %>
+    </table>
 </div>
 
-<p><%= link_to "See #{@story.name}'s characters", story_characters_path(@story.id) %></p>
+<div>
+    <h3>Characters</h3>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Level</th>
+            <th>Species</th>
+            <th>Class</th>
+            <th>Player</th>
+        </tr>
+    <% @story.characters.each do |character| %>
+        <tr>
+            <td><%= link_to character.name, character_path(character.id) %></td>
+            <td><%= character.level %></td>
+            <td><%= character.species %></td>
+            <td><%= character.role %></td>
+            <td><%= character.user.username %></td>
+        <tr>
+    <% end %>
+    </table>
+</div>
+
 <p><%= link_to "Join this Story", new_story_character_path(@story.id) %>
