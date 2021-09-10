@@ -20,6 +20,10 @@ class ApplicationController < ActionController::Base
             object.user == current_user
         end
 
+        def redirect_if_not_authorized(object)
+            redirect_to user_path(current_user) if !object || !authorized_to_edit?(object)
+        end
+
         def set_story_by_params
             @story = Story.find_by_id(params[:story_id])
         end
