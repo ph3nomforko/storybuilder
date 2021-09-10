@@ -4,17 +4,7 @@
 <h1>Edit Journal Entry</h1>
 <% end %>
 
-<% if @journal.errors.any? %>
-    <div id="error_explanation">
-        <h2><%= pluralize(@journal.errors.count, "error") %>prohibited this story from being saved:</h2>
-
-        <ul>
-        <% @journal.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-        <% end %>
-        </ul>
-    </div>
-<% end %>
+<%= render partial: "layouts/errors", locals: {object: @journal} %>
 
 <%= form_for(@journal) do |f| %>
 

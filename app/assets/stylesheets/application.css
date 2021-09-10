@@ -72,14 +72,16 @@
       color :white
   }
 
-  h2 {
-    text-align: center;
-  }
-
-  h3 {
-     text-align: center;
-  }
-
   h4 {
     line-height: 0.5vw;
-  } 
+  }
+
+  input[type=text] {
+    width: 50%;
+  }
+
+  textarea {
+    width: 50%;
+    height: 150px;
+    resize: none;
+  }

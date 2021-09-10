@@ -2,26 +2,26 @@
 <%= render partial: "layouts/errors", locals: {object: @character} %>
 
 <%= form_for(@character) do |f| %>
-    <%= f.label :name %>
+    <%= f.label :name %><br>
     <%= f.text_field :name %>
     <br><br>
-    <%= f.label :species %>
+    <%= f.label :species %><br>
     <%= f.text_field :species %>
     <br><br>
-    <%= f.label :role %>
+    <%= f.label :role, 'Class' %><br>
     <%= f.text_field :role %>
     <br><br>
-    <%= f.label :level %>
+    <%= f.label :level %><br>
     <%= f.text_field :level %>
     <br><br>
-    <%= f.label :description %>
+    <%= f.label :description %><br>
     <%= f.text_area :description %>
     <br><br>
-    <%= f.label :story %>
+    <%= f.label :story %><br>
     <%= f.collection_select :story_id, Story.all, :id, :name %>
     <br><br>
-    <%= f.label "Story Passcode" %>
+    <%= f.label :passcode, 'Story Passcode' %><br>
     <%= f.text_field :passcode %>
     <br><br>
-    <%= f.submit "Edit Character" %>
+    <%= f.submit "Create Character" %>
 <% end %>

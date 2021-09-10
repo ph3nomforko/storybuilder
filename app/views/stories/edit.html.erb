@@ -3,17 +3,17 @@
 <%= render partial: "layouts/errors", locals: {object: @story} %>
 
 <%= form_for(@story) do |f| %>
-    <%= f.label :name %>
+    <%= f.label :name %><br>
     <%= f.text_field :name %>
     <br><br>
-    <%= f.label :summary %>
+    <%= f.label :summary %><br>
     <%= f.text_area :summary %>
     <br><br>
-    <%= f.label :story_outline %>
+    <%= f.label :story_outline, 'Story Outline' %><br>
     <%= f.text_area :story_outline %>
     <br><br>
-    <%= f.label :passcode %>
-    <%= f.text_field :passcode %>
+    <%= f.label :passcode %><br>
+    <%= f.password_field :passcode %>
     <br><br>
     <%= f.submit "Create Story" %>
 <% end %>
