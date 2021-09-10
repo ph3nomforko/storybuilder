@@ -1,4 +1,10 @@
-<h2>Here are your characters!</h2>
+<% if params[:user_id] %>
+  <h2><%= "#{current_user.username}'s Adventurers!" %></h2>
+<% elsif params[:story_id] %>
+  <h2><%= "The Adventurers of #{@story.name}" %></h2>
+<% else %>
+  <h2>All Adventurers</h2>
+<% end %>
 <table>
 <tr>
   <th>Name</th>
