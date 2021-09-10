@@ -18,12 +18,13 @@
      font-family: Georgia, 'Times New Roman', Times, serif;
      background-color: lightgrey;
  }
+ 
+ div.header {
+   text-align: center;
+ }
 
  div.main {
    background-color: whitesmoke;
-   margin-top: 1vh;
-   margin-left: 3vw;
-   margin-right: 3vw;
    padding-bottom: 2vw;
    padding-left: 1vw;
    padding-right: 1vw;
@@ -75,6 +76,10 @@
     text-align: center;
   }
 
-   h3 {
+  h3 {
      text-align: center;
-   }
+  }
+
+  h4 {
+    line-height: 0.5vw;
+  } 
