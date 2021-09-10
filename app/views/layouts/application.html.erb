@@ -12,31 +12,35 @@
   </head>
 
   <body>
-    <div>
-    <h1 style="text-align:center">Role-Playing Game Storybuilder</h1>
+      <div>
+      <h1 style="text-align:center">Role-Playing Game Storybuilder</h1>
+      </div>
+      <div>
+        <% if !logged_in? %>
+        <ul>
+          <li><%= link_to "Create an Account", signup_path %></li>
+          <li><%= link_to "Log In", login_path %></li>
+          <li><%= link_to "Log In with Google", '/auth/google_oauth2' %></li>
+        </ul>
+        <% else %>
+        <ul>
+          <li><%= link_to "My Page", user_path(current_user.id) %></li>
+          <li><%= link_to "Create a Story", new_user_story_path(current_user.id) %></li>
+          <li><%= link_to "All Stories", stories_path %></li>
+          <li><%= link_to "Create a New Character", new_user_character_path(current_user.id) %></li>
+          <li><%= link_to "My Characters", user_characters_path(current_user.id) %></li>
+          <li style="float:right"><%= link_to "Logout", logout_path, method: :delete %></li>
+        </ul>
+        <% end %>
+      </div>
+    <div class="main">
+      <div>
+        <br>
+        <% if flash[:message] %>
+          <h4><%= flash[:message] %></h4>
+        <% end %>
+      </div>
+      <%= yield %>
     </div>
-    <div>
-      <% if !logged_in? %>
-        <%= link_to "Create an Account", signup_path %> |
-        <%= link_to "Log In", login_path %>
-      <% else %>
-      <ul>
-        <li><%= link_to "My Page", user_path(current_user.id) %></li>
-        <li><%= link_to "Create a Story", new_user_story_path(current_user.id) %></li>
-        <li><%= link_to "All Stories", stories_path %></li>
-        <li><%= link_to "Create a New Character", new_user_character_path(current_user.id) %></li>
-        <li><%= link_to "My Characters", user_characters_path(current_user.id) %></li>
-        <li style="float:right"><%= link_to "Logout", logout_path, method: :delete %></li>
-      </ul>
-      <% end %>
-    </div>
-
-    <div>
-      <br>
-      <% if flash[:message] %>
-        <h4><%= flash[:message] %></h4>
-      <% end %>
-    </div>
-    <%= yield %>
   </body>
 </html>
