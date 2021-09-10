@@ -20,5 +20,8 @@
     <%= f.label :story %>
     <%= f.collection_select :story_id, Story.all, :id, :name %>
     <br><br>
+    <%= f.label "Story Passcode" %>
+    <%= f.text_field :passcode %>
+    <br><br>
     <%= f.submit "Edit Character" %>
 <% end %>
