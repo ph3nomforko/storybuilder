@@ -27,6 +27,21 @@ class StoriesController < ApplicationController
         end
     end
 
+    def edit
+        @story = Story.find_by(id: params[:id])
+        redirect_to story_path(@story) if !@story || @story.user != current_user
+    end
+
+    def update
+        @story = Story.find_by(id: params[:id])
+        redirect_to story_path(@story) if !@story || @story.user != current_user
+        if @story.update(story_params)
+            redirect_to story_path(@story)
+        else
+            render :edit
+        end
+    end
+
     private
 
         def story_params
