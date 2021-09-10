@@ -24,7 +24,7 @@
         </ul>
         <% else %>
         <ul>
-          <li><%= link_to "My Page", user_path(current_user.id) %></li>
+          <li><%= link_to "#{current_user.username}'s Page", user_path(current_user.id) %></li>
           <li><%= link_to "Create a Story", new_user_story_path(current_user.id) %></li>
           <li><%= link_to "All Stories", stories_path %></li>
           <li><%= link_to "Create a New Character", new_user_character_path(current_user.id) %></li>
