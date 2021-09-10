@@ -22,12 +22,14 @@
     <th>Name</th>
     <th>Summary</th>
     <th>Date Created</th>
+    <th>Actions</th>
   </tr>
 <% @user.stories.each do |story| %>
     <tr>
-    <td><%= link_to story.name, story_path(story.id) %></td>
-    <td><%= story.summary %></td>
-    <td><%= story.created_at.strftime("%B %e, %Y") %></td>
+      <td><%= link_to story.name, story_path(story.id) %></td>
+      <td><%= story.summary %></td>
+      <td><%= story.created_at.strftime("%B %e, %Y") %></td>
+      <td><%= link_to "Edit", edit_story_path %>
     </tr>
 <% end %>
 </table>
