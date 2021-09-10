@@ -1,22 +1,25 @@
-<h2><%= "#{@user.username}" %>'s Homepage</h2>
-<h3>Your Created Characters</h3>
+<h2 style="text-align:center"><%= "#{@user.username}" %>'s Homepage</h2>
+<h3 style="text-align:center">Your Created Characters</h3>
 <table>
   <tr>
     <th>Character</th>
     <th>Story</th>
     <th>Date Created</th>
+    <th>Actions</th>
   </tr>
 <% @user.characters.each do |character| %>
     <tr>
       <td><%= link_to character.name, character_path(character.id) %></td>
       <td><%= link_to character.story.name, story_path(character.story_id) %></td>
       <td><%= character.created_at.strftime("%B %e, %Y") %></td>
+      <td><%= link_to "Edit", edit_character_path %> |
+      <%= link_to "Delete", character_path(character), method: :delete, data:{ confirm: "Are you sure?" } %></td>
     </tr>
 <% end %>
 </table>
 
 <br><br>
-<h3>Your Stories</h3>
+<h3 style="text-align:center">Your Stories</h3>
 <table>
   <tr>
     <th>Name</th>
@@ -24,12 +27,13 @@
     <th>Date Created</th>
     <th>Actions</th>
   </tr>
-<% @user.stories.each do |story| %>
+  <% @user.stories.each do |story| %>
     <tr>
       <td><%= link_to story.name, story_path(story.id) %></td>
       <td><%= story.summary %></td>
       <td><%= story.created_at.strftime("%B %e, %Y") %></td>
-      <td><%= link_to "Edit", edit_story_path %>
+      <td><%= link_to "Edit", edit_story_path %> |
+      <%= link_to "Delete", story_path(story), method: :delete, data:{ confirm: "Are you sure?" } %></td>
     </tr>
 <% end %>
 </table>
