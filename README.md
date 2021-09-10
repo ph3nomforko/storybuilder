@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Introduction
+This Rails-based site is designed to allow you and your friends to create a role-playing story together. Create an account (or log back in), create a story, or join a story already made! To ensure that your story is intruded upon, each story is made with a passcode, so your story stays your own. Have fun!
 
-Things you may want to cover:
+## Starting Out
+To get this started, grab the code from https://github.com/ph3nomforko/storybuilder and run `bundle install`.
 
-* Ruby version
+Once that finishes, run `rails s` from your terminal, and then navigate to http://localhost:3000 in your web browser.
 
-* System dependencies
+Now you can create an account, and create your first story or character!
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## License
+MIT License https://opensource.org/licenses/MIT
