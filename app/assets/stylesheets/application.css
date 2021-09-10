@@ -78,10 +78,22 @@
 
   input[type=text] {
     width: 50%;
+    padding: 0.5vh 0.5vh;
+  }
+
+  input[type=password] {
+    width: 50%;
+    padding: 0.5vh 0.5vh;
+  }
+
+  input[type=email] {
+    width: 50%;
+    padding: 0.5vh 0.5vh;
   }
 
   textarea {
     width: 50%;
     height: 150px;
+    padding: 0.5vh 0.5vh;
     resize: none;
   }
