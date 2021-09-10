@@ -8,8 +8,9 @@
 <div>
 Journal Entries:<br>
 <% @story.journals.reverse.each do |journal| %>
-    <%= journal.created_at.strftime("%B %e, %Y at %I:%M %p") %><br>
-    <%= journal.content %><br><br>
+    <%= journal.created_at.strftime("%B %e, %Y at %I:%M %p") %> | 
+    <%= journal.content %> | 
+    <%= link_to "Edit", edit_journal_path(journal) %><br><br>
 <% end %>
 <%= link_to "Add a Journal Entry for this Story.", new_story_journal_path(@story.id) %>
 </div>
