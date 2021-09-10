@@ -36,13 +36,13 @@ class CharactersController < ApplicationController
     end
 
     def edit
-        @character = Character.find_by(id: params[:id])
-        redirect_to user_path(current_user) if !@character || @character.user != current_user
+        find_and_set_character
+        redirect_if_not_authorized
     end
 
     def update
-        @character = Character.find_by(id: params[:id])
-        redirect_to user_path(current_user) if !@character || @character.user != current_user
+        find_and_set_character
+        redirect_if_not_authorized
         if @character.update(character_params)
             redirect_to user_characters_path(current_user.id)
         else
@@ -50,9 +50,25 @@ class CharactersController < ApplicationController
         end
     end
 
+    def destroy
+        find_and_set_character
+        redirect_if_not_authorized
+        @character.destroy
+        redirect_to user_path(current_user)
+    end
+
     private
 
-        def character_params
-            params.require(:character).permit(:name, :species, :role, :level, :description, :story_id, :passcode)
-        end
+    def character_params
+        params.require(:character).permit(:name, :species, :role, :level, :description, :story_id, :passcode)
+    end
+
+    def find_and_set_character
+        @character = Character.find_by(id: params[:id])
+    end
+
+    def redirect_if_not_authorized
+        redirect_to user_path(current_user) if !@character || !authorized_to_edit?(@character)
+    end
+
 end
