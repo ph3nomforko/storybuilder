@@ -2,7 +2,7 @@ class StoriesController < ApplicationController
     before_action :redirect_if_not_logged_in
 
     def show
-        @story = Story.find_by(id: params[:id])
+        find_and_set_story
     end
 
     def index
@@ -28,13 +28,13 @@ class StoriesController < ApplicationController
     end
 
     def edit
-        @story = Story.find_by(id: params[:id])
-        redirect_to story_path(@story) if !@story || @story.user != current_user
+        find_and_set_story
+        redirect_if_not_authorized(@story)
     end
 
     def update
-        @story = Story.find_by(id: params[:id])
-        redirect_to story_path(@story) if !@story || @story.user != current_user
+        find_and_set_story
+        redirect_if_not_authorized(@story)
         if @story.update(story_params)
             redirect_to story_path(@story)
         else
@@ -42,10 +42,21 @@ class StoriesController < ApplicationController
         end
     end
 
+    def destroy
+        find_and_set_story
+        redirect_if_not_authorized(@story)
+        @story.destroy
+        redirect_to user_path(current_user)
+    end
+
     private
 
-        def story_params
-            params.require(:story).permit(:name, :summary, :story_outline, :passcode)
-        end
+    def story_params
+        params.require(:story).permit(:name, :summary, :story_outline, :passcode)
+    end
+
+    def find_and_set_story
+        @story = Story.find_by(id: params[:id])
+    end 
 
 end
