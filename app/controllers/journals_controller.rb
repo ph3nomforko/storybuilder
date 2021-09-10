@@ -34,7 +34,7 @@ class JournalsController < ApplicationController
 
     def edit
         @journal = Journal.find_by(id: params[:id])
-        redirect_to stories_path if !@journal || @journal.user != current_user
+        redirect_to story_path(@journal.story.id) if !@journal || @journal.user != current_user
     end
 
     def update
