@@ -33,12 +33,12 @@ class JournalsController < ApplicationController
     end
 
     def edit
-        @journal = Journal.find_by(id: params[:id])
+        find_and_set_journal
         redirect_to story_path(@journal.story.id) if !@journal || @journal.user != current_user
     end
 
     def update
-        @journal = Journal.find_by(id: params[:id])
+        find_and_set_journal
         redirect_to stories_path if !@journal || @journal.user != current_user
         if @journal.update(journal_params)
             redirect_to stories_path
@@ -47,9 +47,21 @@ class JournalsController < ApplicationController
         end
     end
 
+    def destroy
+        find_and_set_journal
+        redirect_to stories_path if !@journal || @journal.user != current_user
+        @journal.destroy
+        redirect_to user_path(current_user)
+    end
+
+
     private
 
-        def journal_params
-            params.require(:journal).permit(:content, :story_id)
-        end
+    def journal_params
+        params.require(:journal).permit(:content, :story_id)
+    end
+
+    def find_and_set_journal
+        @journal = Journal.find_by(id: params[:id])
+    end
 end
