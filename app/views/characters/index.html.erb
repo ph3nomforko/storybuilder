@@ -1,5 +1,15 @@
 <h2>Here are your characters!</h2>
+<table>
+<tr>
+  <th>Name</th>
+  <th>Description</th>
+  <th>Story</th>
+</tr>
 <% current_user.characters.each do |character| %>
-  <%= link_to character.name, character_path(character.id) %> |
-  <%= link_to character.story.name, story_path(character.story_id) %>
+<tr>
+  <td><%= link_to character.name, character_path(character.id) %></td>
+  <td><%= character.description %></td>
+  <td><%= link_to character.story.name, story_path(character.story_id) %></td>
+</tr>
 <% end %>
+</table>
