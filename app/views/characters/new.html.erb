@@ -22,7 +22,7 @@
     <%= f.collection_select :story_id, Story.all, :id, :name %>
     <br><br>
     <%= f.label "Story Passcode" %>
-    <%= f.password_field :passcode %>
+    <%= f.text_field :passcode %>
     <br><br>
     <%= f.submit "Create Character" %>
 <% end %>
