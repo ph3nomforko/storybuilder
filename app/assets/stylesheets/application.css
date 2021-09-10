@@ -16,6 +16,7 @@
 
  body {
      font-family: Georgia, 'Times New Roman', Times, serif;
+     background-color: lightgrey;
  }
  ul {
     list-style-type: none;
@@ -38,7 +39,7 @@
   }
   
   li a:hover {
-    background-color: #111;
+    background-color: darkred;
   }
 
   table {
